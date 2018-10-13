@@ -1,6 +1,6 @@
 require "spec_helper"
-require_relative "../lib/machine"
-require_relative '../lib/product'
+require_relative "../lib/machine/machine"
+require_relative '../lib/machine/product'
 
 RSpec.describe Machine do
   let(:snickers) { Product.new(name: "snickers", price: "€1") }
