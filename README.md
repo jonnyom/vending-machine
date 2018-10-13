@@ -8,6 +8,7 @@ or inform you of the relevant error.
 ### Installing the machine
 `gem install vending_machine`
 
+### The machine
 The machine itself contains a hash of products, and its available change,
 in denominations of €2 to 1c inclusive.
 
@@ -55,7 +56,7 @@ the change going below 0.
 
 For example
 ```ruby
-available_coins = [1, 3, 4], change_ = 2
+available_coins = [1, 3, 4], change = 2
 2 - 4 = -2: less than 0, moving on
 2 - 3 = -1: less than 0, moving on
 2 - 1 = 1: greater than 0, adding 1 to change array and checking if 1 still works with new change of 1
