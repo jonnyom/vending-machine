@@ -1,9 +1,12 @@
 # Vending Machine [![Build Status](https://travis-ci.org/jonnyom/vending_machine.svg?branch=master)](https://travis-ci.org/jonnyom/vending_machine)
-This is a Ruby script which emulates a vending machine.
+This is a Ruby gem which emulates a vending machine.
 
 Provided with the name of a product and an array of coins (in string values), 
 the machine will either return the correct product, 
 or inform you of the relevant error.
+
+### Installing the machine
+`gem install vending_machine`
 
 The machine itself contains a hash of products, and its available change,
 in denominations of €2 to 1c inclusive.
