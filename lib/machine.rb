@@ -2,11 +2,12 @@
 
 require_relative "./cash"
 require_relative "./product"
-require_relative "./errors/invalid_coin_error"
-require_relative "./errors/more_money_error"
-require_relative "./errors/no_money_error"
-require_relative "./errors/out_of_money_error"
-require_relative "../lib/errors/out_of_selected_product_error"
+require_relative "../errors/invalid_coin_error"
+require_relative "../errors/more_money_error"
+require_relative "../errors/no_money_error"
+require_relative "../errors/out_of_money_error"
+require_relative "../errors/out_of_selected_product_error"
+require "pry"
 
 class Machine
   attr_accessor :products, :available_change
@@ -40,6 +41,7 @@ class Machine
       return product_and_change(product)
     end
     raise OutOfMoneyError if remaining_change.empty?
+    increment_available_change(cash_values)
     change = change(product_price: product_price, coins: cash_values)
     coins = calculate_coin_denominations(change: change)
     decrement_available_products(product)
@@ -55,9 +57,7 @@ class Machine
 
   private def correct_change_given?(product_price:, coins: [])
     raise ArgumentError unless coins.is_a? Array
-    return true if exact_change?(coins: coins) && (product_price - coins.first).zero?
-    change = change(product_price: product_price, coins: coins)
-    change <= 0
+    true if exact_change?(coins: coins) && (product_price - coins.first).zero?
   end
 
   private def change(product_price:, coins:)
@@ -125,6 +125,10 @@ class Machine
 
   private def decrement_available_change(change_array)
     change_array.each { |change| available_change[change] -= 1 }
+  end
+
+  private def increment_available_change(cash)
+    cash.each { |coin| available_change[coin] += 1 }
   end
 
   private def decrement_available_products(product)

@@ -101,7 +101,8 @@ RSpec.describe Machine do
 
     it "decrements the amount of change" do
       machine.select_product(product: "snickers", coins: ["€1", "1c"])
-      expect(machine.available_change[1]).to eq(99)
+      expect(machine.available_change[1]).to eq(100)
+      expect(machine.available_change[100]).to eq(101)
       expect(machine.products["snickers"][:available]).to eq(9)
     end
   end
