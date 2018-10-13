@@ -77,7 +77,7 @@ machine.select_product(product: "Snickers", coins: ["€2"])
 ### Running the machine locally
 Simply run `gem install vending_machine`.
 
-Then call a CLI of your choice (for example `pry` or `irb`)
+Then call a Ruby console of your choice (for example `pry` or `irb`)
 
 Requiring the installed gem will then let you interact with it. 
 
