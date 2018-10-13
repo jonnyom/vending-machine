@@ -1,5 +1,5 @@
-require_relative "./product"
-require_relative "./machine"
+require "machine/product"
+require "machine/machine"
 
 def products
   snickers = Product.new(name: "Snickers", price: "€2")
@@ -29,6 +29,5 @@ def change
   }
 end
 
-def machine
-  Machine.new(products: products, available_change: change)
+module VendingMachine
 end
