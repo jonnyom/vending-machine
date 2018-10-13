@@ -35,11 +35,12 @@ class Machine
   private def find_product(product:, cash_values:)
     product_price = product.cash_value
     if correct_change_given?(product_price: product_price, coins: cash_values)
-      available_change[product_price] += 1
+      increment_available_change(cash_values)
       decrement_available_products(product)
       return product_and_change(product)
     end
     raise OutOfMoneyError if remaining_change.empty?
+    increment_available_change(cash_values)
     change = change(product_price: product_price, coins: cash_values)
     coins = calculate_coin_denominations(change: change)
     decrement_available_products(product)
@@ -55,9 +56,7 @@ class Machine
 
   private def correct_change_given?(product_price:, coins: [])
     raise ArgumentError unless coins.is_a? Array
-    return true if exact_change?(coins: coins) && (product_price - coins.first).zero?
-    change = change(product_price: product_price, coins: coins)
-    change <= 0
+    true if exact_change?(coins: coins) && (product_price - coins.first).zero?
   end
 
   private def change(product_price:, coins:)
@@ -125,6 +124,10 @@ class Machine
 
   private def decrement_available_change(change_array)
     change_array.each { |change| available_change[change] -= 1 }
+  end
+
+  private def increment_available_change(cash)
+    cash.each { |coin| available_change[coin] += 1 }
   end
 
   private def decrement_available_products(product)
