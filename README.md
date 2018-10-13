@@ -1,4 +1,4 @@
-# Vending Machine
+# Vending Machine [![Build Status](https://travis-ci.org/jonnyom/vending_machine.svg?branch=master)](https://travis-ci.org/jonnyom/vending_machine)
 This is a Ruby script which emulates a vending machine.
 
 Provided with the name of a product and an array of coins (in string values), 
