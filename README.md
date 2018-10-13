@@ -6,7 +6,9 @@ the machine will either return the correct product,
 or inform you of the relevant error.
 
 ### Installing the machine
-`gem install vending_machine`
+```
+gem install vending_machine
+```
 
 ### The machine
 The machine itself contains a hash of products, and its available change,
