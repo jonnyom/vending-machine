@@ -35,7 +35,7 @@ class Machine
   private def find_product(product:, cash_values:)
     product_price = product.cash_value
     if correct_change_given?(product_price: product_price, coins: cash_values)
-      available_change[product_price] += 1
+      increment_available_change(cash_values)
       decrement_available_products(product)
       return product_and_change(product)
     end
