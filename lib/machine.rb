@@ -7,7 +7,6 @@ require_relative "../errors/more_money_error"
 require_relative "../errors/no_money_error"
 require_relative "../errors/out_of_money_error"
 require_relative "../errors/out_of_selected_product_error"
-require "pry"
 
 class Machine
   attr_accessor :products, :available_change
