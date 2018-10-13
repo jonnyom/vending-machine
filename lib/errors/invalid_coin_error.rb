@@ -1,0 +1,2 @@
+class InvalidCoinError < StandardError
+end

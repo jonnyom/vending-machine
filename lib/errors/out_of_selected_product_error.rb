@@ -1,0 +1,2 @@
+class OutOfSelectedProductError < StandardError
+end

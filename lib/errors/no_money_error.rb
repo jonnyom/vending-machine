@@ -1,0 +1,2 @@
+class NoMoneyError < StandardError
+end
